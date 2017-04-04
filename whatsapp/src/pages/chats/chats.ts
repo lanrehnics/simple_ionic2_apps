@@ -69,9 +69,11 @@ export class ChatsPage {
   }
 
   removeChat(chat: Chat): void {
-    this.chats = this.chats.map<Chat[]>((chatsArray) => {
+    this.chats = this.chats.map((chatsArray) => {
       const chatIndex = chatsArray.indexOf(chat);
-      chatsArray.splice(chatIndex, 1);
+      if (chatIndex != -1) {
+        chatsArray.splice(chatIndex, 1);
+      }
       return chatsArray;
     });
   }
