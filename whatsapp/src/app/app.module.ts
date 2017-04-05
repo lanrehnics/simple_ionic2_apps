@@ -5,12 +5,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyApp } from './app.component';
 import { ChatsPage } from '../pages/chats/chats';
+import { MessagesPage } from '../pages/messages/messages';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    ChatsPage
+    ChatsPage,
+    MessagesPage
+
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -19,7 +22,8 @@ import { ChatsPage } from '../pages/chats/chats';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ChatsPage
+    ChatsPage,
+    MessagesPage
   ],
   providers: [
     StatusBar,
