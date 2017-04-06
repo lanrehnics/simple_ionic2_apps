@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>A column</ion-col>
+      <ion-col>A column</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col offset-6>A new column</ion-col>
+    </ion-row>
+  </ion-grid>
+ <button 
+  (click)='onClick()'
+  ion-button
+  color='secondary'>A normal button</button>
+
+<button 
+  (click)='onClick()'
+  ion-button
+  block
+  icon-right
+>
+  Home
+  <ion-icon name='home'></ion-icon>
+</button>
+<button ion-item>button item</button>
+
+<ion-item-group>
+  <ion-item-divider>A</ion-item-divider>
+  <ion-item>apple</ion-item>
+  <ion-item>avacados</ion-item>
+  <ion-item-divider>B</ion-item-divider>
+  <ion-item>bananas</ion-item>
+  <ion-item>berries</ion-item>
+</ion-item-group>
+<ion-list>
+  <ion-list-header>Privacy</ion-list-header>
+  <ion-item>Tracking</ion-item>
+  <ion-item>Personal Information</ion-item>
+  <ion-list-header>Sharing</ion-list-header>
+  <ion-item>Anyone</ion-item>
+  <ion-item>None</ion-item>
+</ion-list>
+</ion-content>
