@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from "@angular/http";
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,7 +18,6 @@ import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
 import { AuthService } from '../services/auth';
 import { SLOptionsPage } from '../pages/shopping-list/sl-options/sl-options';
-import { Http } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import { Http } from '@angular/http';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -53,8 +54,7 @@ import { Http } from '@angular/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ShoppingListService,
     RecipesService,
-    AuthService,
-    Http
+    AuthService
   ]
 })
 export class AppModule {}

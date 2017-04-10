@@ -5,6 +5,7 @@ import { Ingredient } from '../../models/ingredient';
 import { PopoverController } from "ionic-angular";
 import { SLOptionsPage } from './sl-options/sl-options';
 import { AuthService } from '../../services/auth';
+import { Http } from "@angular/http";
 
 @Component({
   selector: 'page-shopping-list',
@@ -15,7 +16,8 @@ export class ShoppingListPage {
   
   constructor(private slService: ShoppingListService,
               private popoverController: PopoverController,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              public http: Http) {}
 
   private loadItems() {
     this.listItems = this.slService.getItems();

@@ -12,3 +12,10 @@
   https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html
 */
 declare module '*';
+
+declare module 'meteor/accounts-base' {
+  module Accounts {
+    function requestPhoneVerification(phoneNumber: string, callback?: Function): void;
+    function verifyPhone(phoneNumber: string, code: string, callback?: Function): void;
+  }
+}

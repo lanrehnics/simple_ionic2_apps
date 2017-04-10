@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyApp } from './app.component';
 import { ChatsPage } from '../pages/chats/chats';
 import { MessagesPage } from '../pages/messages/messages';
+import { PhoneService } from "src/services/phone";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MessagesPage } from '../pages/messages/messages';
   providers: [
     StatusBar,
     SplashScreen,
+    PhoneService
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -8,7 +8,7 @@ import 'rxjs/Rx';
 export class ShoppingListService {
     private ingredients: Ingredient[] = [];
     
-    constructor(private http: Http,
+    constructor(public http: Http,
                 private authService: AuthService) {}
 
     addItem(name: string, amount:  number) {
