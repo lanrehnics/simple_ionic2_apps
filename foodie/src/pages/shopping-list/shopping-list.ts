@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { ShoppingListService } from '../../services/shopping-list';
 import { Ingredient } from '../../models/ingredient';
+import { PopoverController } from "ionic-angular";
+import { SLOptionsPage } from './sl-options/sl-options';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'page-shopping-list',
@@ -10,7 +13,9 @@ import { Ingredient } from '../../models/ingredient';
 export class ShoppingListPage {
   listItems: Ingredient[];
   
-  constructor(private slService: ShoppingListService) {}
+  constructor(private slService: ShoppingListService,
+              private popoverController: PopoverController,
+              private authService: AuthService) {}
 
   private loadItems() {
     this.listItems = this.slService.getItems();
@@ -29,5 +34,29 @@ export class ShoppingListPage {
   onCheckItem(index: number) {
     this.slService.removeItem(index);
     this.loadItems();
+  }
+
+  onShowOptions(event: MouseEvent) {
+    const popover = this.popoverController.create(SLOptionsPage);
+    
+    popover.present({ev: event});
+    popover.onDidDismiss(data => {
+      if (data.action === 'load') {
+
+      } else {
+        this.authService.getActiveUser().getToken()
+          .then((token: string) => {
+            this.slService.storeList(token)
+              .subscribe(
+                () => console.log('Success'),
+                error => {
+                  console.log(error)
+                }
+              )
+          })
+          .catch()
+      }
+    })
+
   }
 }
