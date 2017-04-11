@@ -5,9 +5,7 @@ import { Platform } from 'ionic-angular';
  
 @Injectable()
 export class PhoneService {
-  constructor(private platform: Platform) {
-    console.log('working');
-  }
+  constructor(private platform: Platform) {}
  
   verify(phoneNumber: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
