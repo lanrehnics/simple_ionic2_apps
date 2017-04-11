@@ -7,14 +7,15 @@ import { MyApp } from './app.component';
 import { ChatsPage } from '../pages/chats/chats';
 import { MessagesPage } from '../pages/messages/messages';
 import { PhoneService } from "../services/phone";
+import { LoginPage } from "../pages/login/login";
 
 
 @NgModule({
   declarations: [
     MyApp,
     ChatsPage,
-    MessagesPage
-
+    MessagesPage,
+    LoginPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -24,13 +25,14 @@ import { PhoneService } from "../services/phone";
   entryComponents: [
     MyApp,
     ChatsPage,
-    MessagesPage
+    MessagesPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    PhoneService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PhoneService
   ]
 })
 export class AppModule {}

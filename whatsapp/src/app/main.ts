@@ -1,16 +1,13 @@
 import 'meteor-client';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
+import { Meteor } from 'meteor/meteor';
 import { AppModule } from './app.module';
 import { MeteorObservable } from "meteor-rxjs";
 
 Meteor.startup(() => {
-    const subsciption = MeteorObservable.autorun().subscribe(()=> {
-        if (Meteor.loggingIn()) {
-            return;
-        }
-        setTimeout(()=> subsciption.unsubscribe())
-        platformBrowserDynamic().bootstrapModule(AppModule);
-    })
-})
+    const subscription = MeteorObservable.autorun().subscribe(() => {
+    setTimeout(() => subscription.unsubscribe());
+    platformBrowserDynamic().bootstrapModule(AppModule);
+  });
+});

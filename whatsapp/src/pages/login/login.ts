@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { AlertController, NavController, Alert } from "ionic-angular";
-import { PhoneService } from "src/services/phone";
+import { PhoneService } from "../../services/phone";
 
 @Component({
     selector: 'login',
