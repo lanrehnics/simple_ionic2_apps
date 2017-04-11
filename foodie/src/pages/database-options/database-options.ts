@@ -22,7 +22,7 @@ import { ViewController } from "ionic-angular";
         </ion-grid>
     `
 })
-export class SLOptionsPage {
+export class DatabaseOptionsPage {
     constructor(private viewController: ViewController) {}
     onAction(action: string) {
         this.viewController.dismiss({action});

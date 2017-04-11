@@ -36,4 +36,17 @@ export class ShoppingListService {
             })
     }
 
+    fetchList(token: string) {
+        const userId = this.authService.getActiveUser().uid;
+        return this.http.get(`https://ionic2-foodie.firebaseio.com/${userId}/shopping-list.json?auth=${token}`)
+            .map((response: Response)=>response.json())
+            .do((ingredients: Ingredient[]) => {
+                if (ingredients) {
+                this.ingredients = ingredients;
+                } else {
+                    this.ingredients = [];
+                }
+            });
+    }
+
 }
