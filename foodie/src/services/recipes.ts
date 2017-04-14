@@ -44,7 +44,13 @@ export class RecipesService {
         const userId = this.authService.getActiveUser().uid;
         return this.http.get(`https://ionic2-foodie.firebaseio.com/${userId}/recipes-list.json?auth=${token}`)
             .map((response: Response) => {
-                return response.json()
+                const recipes: Recipe[] = response.json() ? response.json() : []; 
+                for(let item of recipes) {
+                    if(!item.hasOwnProperty('ingredients')) {
+                        item.ingredients = [];
+                    }
+                }
+                return recipes;
             })
             .do((recipes: Recipe[]) => {
                 if (recipes) {

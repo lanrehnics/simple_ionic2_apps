@@ -5,20 +5,21 @@ import { Recipe } from '../../models/recipe';
 import { RecipesService } from '../../services/recipes';
 import { RecipePage } from '../recipe/recipe';
 import { DatabaseOptionsPage } from '../database-options/database-options';
+import { AuthService } from "../../services/auth";
 
 @Component({
   selector: 'page-recipes',
   templateUrl: 'recipes.html',
 })
 export class RecipesPage {
-    authService: any;
   recipes: Recipe[];
 
   constructor(private navCtrl: NavController, 
               private recipesService: RecipesService,
               private popoverController: PopoverController,
               private loadingController: LoadingController,
-              private alertController: AlertController) {}
+              private alertController: AlertController,
+              private authService: AuthService) {}
 
   ionViewWillEnter() {
     this.recipes = this.recipesService.getRecipes();
@@ -47,6 +48,7 @@ export class RecipesPage {
     const popover = this.popoverController.create(DatabaseOptionsPage);
     popover.present({ev: event});
     popover.onDidDismiss(data => {
+      if (!data) { return; }
       if (data.action === 'load') {
         loading.present();
         this.authService.getActiveUser().getToken()
